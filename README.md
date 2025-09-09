@@ -17,6 +17,7 @@ Saat seorang pengguna mengakses aplikasi web Django, proses dimulai ketika brows
 
 
 3. Jelaskan peran settings.py dalam proyek Django!
+
 Jawab:
 File settings.py adalah pusat kendali dari sebuah proyek Django. File ini berfungsi sebagai file konfigurasi utama yang mendefinisikan hampir semua aspek perilaku proyek. Di dalamnya, kita mendaftarkan semua aplikasi yang akan digunakan melalui INSTALLED_APPS, sehingga Django mengenali model, view, dan URL dari setiap aplikasi. Selain itu, settings.py berisi konfigurasi koneksi ke database (DATABASES), menentukan jenis dan detail aksesnya. File ini juga mengatur lapisan MIDDLEWARE yang memproses setiap request dan response, menambahkan fungsionalitas seperti keamanan sesi dan autentikasi. Pengaturan untuk aset statis (CSS, JavaScript) melalui STATIC_URL, konfigurasi template engine, dan SECRET_KEY untuk keamanan kriptografi juga semuanya diatur di sini. Jadi, settings.py menyatukan semua bagian terpisah dari proyek Django dan memastikan semuanya bekerja secara harmonis sesuai dengan aturan yang telah kita tetapkan.
 
