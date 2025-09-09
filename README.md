@@ -38,8 +38,8 @@ Django dijadikan framework yang ideal untuk pemula karena mengikuti istilah "bat
 
 Jawab: Tidak ada, asisten dosen telah melaksanakan tugasnya dengan baik pada tutorial 1 kemarin.
 
-Referensi :
 
+Referensi :
 https://docs.djangoproject.com/en/5.2/intro/overview/#the-request-response-cycle
 https://docs.djangoproject.com/en/5.2/topics/settings/
 https://docs.djangoproject.com/en/5.2/topics/migrations/
