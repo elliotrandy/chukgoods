@@ -12,6 +12,7 @@ Setelah proyek Django berhasil dibuat, saya membuat aplikasi utama bernama main 
 
 Jawab:
 Link gambar bagan -> https://drive.google.com/file/d/1cO06XyhFfcZe6UbFz501mwyssFB4HOMj/view?usp=sharing
+
 Saat seorang pengguna mengakses aplikasi web Django, proses dimulai ketika browser mengirimkan sebuah HTTP Request ke server. Django pertama kali menerima permintaan ini melalui file urls.py. File ini akan mencocokkan URL yang diminta dengan pola-pola yang telah didefinisikan untuk menemukan fungsi View yang tepat untuk menangani permintaan tersebut. Setelah ditemukan, fungsi di dalam views.py akan dieksekusi. Di sinilah seluruh logika aplikasi berjalan. Jika View memerlukan data, View akan berkomunikasi dengan models.py, yang berfungsi sebagai jembatan ke database melalui Django ORM. Setelah mendapatkan data yang diperlukan, View akan memanggil file template.html dan menyisipkan data tersebut ke dalamnya. Template engine Django kemudian merender file ini menjadi sebuah halaman HTML utuh, yang akhirnya dikemas oleh View ke dalam sebuah HTTP Response dan dikirim kembali ke browser untuk ditampilkan.
 
 
