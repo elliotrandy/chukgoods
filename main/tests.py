@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from .models import Shop
+from .models import Product
 
 class MainTest(TestCase):
     def test_main_url_is_exist(self):
@@ -14,46 +14,46 @@ class MainTest(TestCase):
         response = Client().get('/burhan_always_exists/')
         self.assertEqual(response.status_code, 404)
 
-    # def test_shop_creation(self):
-    #     shop = Shop.objects.create(
+    # def test_product_creation(self):
+    #     product = Product.objects.create(
     #       name="BURHAN FC MENANG",
     #       description="BURHAN FC 1-0 PANDA BC",
     #       category="apparel",
     #       is_featured=True
     #     )
-    #     self.assertEqual(shop.category, "apparel")
-    #     self.assertTrue(shop.is_featured)
+    #     self.assertEqual(product.category, "apparel")
+    #     self.assertTrue(product.is_featured)
         
-    # def test_shop_default_values(self):
-    #     shop = Shop.objects.create(
-    #       name="Test Shop",
+    # def test_product_default_values(self):
+    #     product = Product.objects.create(
+    #       name="Test Product",
     #       description="Test description"
     #     )
-    #     self.assertEqual(shop.category, "footwear")
-    #     self.assertFalse(shop.is_featured)
+    #     self.assertEqual(product.category, "footwear")
+    #     self.assertFalse(product.is_featured)
         
     # def test_increment_views(self):
-    #     shop = Shop.objects.create(
-    #       name="Test Shop",
+    #     product = Product.objects.create(
+    #       name="Test Product",
     #       description="Test description"
     #     )
-    #     initial_views = shop.shop_views
-    #     shop.increment_views()
-    #     self.assertEqual(shop.shop_views, initial_views + 1)
+    #     initial_views = product.product_views
+    #     product.increment_views()
+    #     self.assertEqual(product.product_views, initial_views + 1)
         
-    # def test_is_shop_hot_threshold(self):
-    #     # Test shop with exactly 20 views (should not be hot)
-    #     shop_20 = Shop.objects.create(
-    #       name="Shop with 20 views",
+    # def test_is_product_hot_threshold(self):
+    #     # Test product with exactly 20 views (should not be hot)
+    #     product_20 = Product.objects.create(
+    #       name="Product with 20 views",
     #       description="Test description",
-    #       shop_views=20
+    #       product_views=20
     #     )
-    #     self.assertFalse(shop_20.is_shop_hot)
+    #     self.assertFalse(product_20.is_product_hot)
         
-    #     # Test shop with 21 views (should be hot)
-    #     shop_21 = Shop.objects.create(
-    #       name="Shop with 21 views", 
+    #     # Test product with 21 views (should be hot)
+    #     product_21 = Product.objects.create(
+    #       name="Product with 21 views", 
     #       description="Test description",
-    #       shop_views=21
+    #       product_views=21
     #     )
-    #     self.assertTrue(shop_21.is_shop_hot)
+    #     self.assertTrue(product_21.is_product_hot)

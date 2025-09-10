@@ -1,7 +1,7 @@
-# import uuid
+import uuid
 from django.db import models
 
-class Shop(models.Model):
+class Product(models.Model):
     CATEGORY_CHOICES = [
         ('apparel', 'Apparel'),
         ('footwear', 'Footwear'),
@@ -10,7 +10,7 @@ class Shop(models.Model):
         ('fan gear', 'Fan Gear'),
     ]
     
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     price = models.IntegerField()
     description = models.TextField()
