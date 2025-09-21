@@ -89,3 +89,30 @@ https://www.freecodecamp.org/product/what-is-an-api-in-english-please-b880a3214a
 https://aws.amazon.com/compare/the-difference-between-json-xml/
 https://docs.djangoproject.com/en/5.2/ref/forms/validation/
 https://docs.djangoproject.com/en/5.2/ref/csrf/
+
+# Tugas 4
+
+## 1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya!
+
+### Jawab: 
+Jawaban...
+
+## 2. Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
+
+### Jawab: 
+Jawaban...
+
+## 3. Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
+
+### Jawab: 
+Jawaban...
+
+## 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?
+
+### Jawab: 
+Jawaban...
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+
+### Jawab: 
+Jawaban...
