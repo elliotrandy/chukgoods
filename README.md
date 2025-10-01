@@ -120,3 +120,43 @@
   ### Jawab: 
   Saya memulai dengan menambahkan mekanisme autentikasi dasar, yaitu halaman registrasi berbasis UserCreationForm, login dengan AuthenticationForm, serta logout, lengkap dengan routing dan template masing-masing. Setelah itu, saya merestriksi akses halaman utama menggunakan login_required agar hanya pengguna terautentikasi yang bisa mengaksesnya. Berikutnya, saya menghubungkan model Product ke User melalui relasi ForeignKey sehingga setiap produk memiliki pemilik yang jelas, alur penambahan produk otomatis menempelkan pengguna yang sedang login, dan halaman utama saya lengkapi filter “All” vs “My” untuk menampilkan seluruh produk atau hanya milik pengguna. Untuk penyimpanan state ringan, saya menerapkan cookie last_login yang diset saat login dan dihapus saat logout, serta menampilkan nilainya di halaman utama bersama informasi username. Terakhir, saya membuat dua akun pengguna di lingkungan lokal dan mengisi masing-masing tiga data produk dummy, lalu menguji login dengan kedua akun untuk memastikan pemisahan data berjalan (produk milik akun A tidak muncul ketika login sebagai akun B), sekaligus memverifikasi alur autentikasi, session, dan cookies sudah berfungsi sesuai kebutuhan.
 </details>
+
+<details>
+  <summary>Tugas 5</summary>
+  
+  ## 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+  
+  ### Jawab: 
+  Jika sebuah elemen HTML ditargetkan oleh beberapa selector CSS, browser akan menerapkan style berdasarkan urutan prioritas yang disebut spesifisitas. Aturan dengan spesifisitas tertinggi akan selalu menang. Urutan prioritas dari yang paling tinggi ke paling rendah adalah: inline style (atribut style di dalam tag HTML), ID selector (misalnya, #header), class, attribute, dan pseudo-class selectors (misalnya, .card, [type="submit"], :hover), dan yang terakhir adalah element dan pseudo-element selectors (misalnya, div, p). Jika spesifisitasnya sama, maka aturan yang ditulis paling akhir di dalam file CSS yang akan diterapkan. Aturan !important dapat digunakan untuk mengesampingkan semua prioritas lainnya, namun sebaiknya dihindari agar kode tetap mudah dikelola.
+  
+  ## 2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+  
+  ### Jawab: 
+  Responsive design adalah konsep krusial dalam pengembangan web modern karena memastikan sebuah situs web dapat tampil dan berfungsi secara optimal di berbagai ukuran layar, mulai dari desktop hingga smartphone. Di era di mana mayoritas pengguna mengakses internet melalui perangkat mobile, situs yang tidak responsif akan memberikan pengalaman buruk, seperti teks yang sulit dibaca atau tombol yang sulit ditekan, yang membuat pengguna frustrasi dan cenderung meninggalkan situs tersebut. Contoh aplikasi yang sudah menerapkan responsive design dengan baik adalah YouTube, yang tata letaknya berubah total dari tampilan multi-kolom di desktop menjadi single-kolom yang mudah di-scroll di mobile. Sebaliknya, banyak situs pemerintah atau akademik lama yang belum responsif, di mana pengguna mobile harus melakukan zoom dan geser secara manual untuk menavigasi halaman, membuktikan betapa tidak efektifnya desain yang kaku.
+  
+  ## 3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+  
+  ### Jawab: 
+  Dalam CSS Box Model, margin, border, dan padding adalah tiga properti yang mengatur ruang di sekitar sebuah elemen. Bayangkan sebuah elemen sebagai foto dalam bingkai. Padding adalah ruang transparan di dalam bingkai, yang memisahkan foto (konten) dari bingkainya. Border adalah bingkainya itu sendiri, yang memiliki ketebalan, warna, dan gaya. Sementara itu, Margin adalah ruang transparan di luar bingkai, yang menciptakan jarak antara bingkai foto tersebut dengan bingkai foto atau elemen lain di dinding. Singkatnya, padding mengatur ruang di dalam, border adalah garis tepinya, dan margin mengatur jarak dengan elemen di luar.
+  
+  ## 4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+  
+  ### Jawab: 
+  Flexbox dan Grid adalah dua sistem layout CSS untuk menyusun elemen, namun dengan tujuan berbeda. Flexbox adalah sistem layout satu dimensi, yang ideal untuk mengatur elemen dalam satu baris (horizontal) atau satu kolom (vertikal). Kegunaan utamanya adalah untuk mendistribusikan ruang dan perataan item di dalam sebuah container, seperti menyusun item navigasi di dalam sebuah navbar. Di sisi lain, Grid adalah sistem layout dua dimensi yang dirancang untuk mengatur elemen dalam baris dan kolom secara bersamaan. Ini membuatnya sangat cocok untuk layout halaman yang kompleks, seperti membuat galeri gambar, atau menyusun struktur utama halaman web yang terdiri dari header, sidebar, konten, dan footer.
+  
+  ## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+  
+  ### Jawab: 
+  Untuk menyelesaikan tugas ini, saya memulai dengan mengintegrasikan framework Tailwind CSS ke dalam proyek Django melalui CDN di base.html untuk fondasi styling. Selanjutnya, saya mengimplementasikan fungsionalitas backend untuk mengedit dan menghapus produk dengan membuat fungsi di views.py dan mendaftarkan URL-nya di urls.py. Setelah itu, saya fokus ke frontend dengan mengubah tampilan. Saya membuat navbar yang responsif, mendesain halaman daftar produk menggunakan sistem grid dan kartu (card), serta mengimplementasikan logika kondisional untuk menampilkan pesan khusus jika tidak ada produk. Setiap kartu produk dilengkapi dengan tombol edit dan hapus yang terhubung ke fungsi backend. Terakhir, saya menerapkan styling yang konsisten pada semua halaman lain seperti login, register, dan detail produk, lalu melakukan pengujian menyeluruh untuk memastikan semua fitur berfungsi dan desainnya responsif di berbagai ukuran layar.
+
+  #### Referensi :
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity
+  https://css-tricks.com/specifics-on-css-specificity/
+  https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design
+  https://web.dev/articles/responsive-web-design-basics
+  https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model
+  https://www.freecodecamp.org/news/css-box-model-explained-by-living-in-a-boring-suburban-neighborhood-9a9e692773c1/
+  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+  https://css-tricks.com/snippets/css/complete-guide-grid/
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Relationship_of_grid_layout_with_other_layout_methods
+</details>
