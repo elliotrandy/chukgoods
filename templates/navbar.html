@@ -1,0 +1,143 @@
+<nav class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur border-b border-slate-200 shadow-md">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 group" aria-label="CHUKGOODS Home">
+        <h1 class="text-xl font-semibold tracking-tight text-slate-900">
+          <span class="text-blue-600">CHUKGOODS</span>
+        </h1>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/"
+          class="relative font-medium transition-colors
+                  {% if request.path == '/' %}
+                    text-blue-600 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-blue-600 after:rounded
+                  {% else %}
+                    text-slate-600 hover:text-slate-900
+                  {% endif %}
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-md">
+          Home
+        </a>
+        <a href="{% url 'main:create_product' %}"
+          class="relative font-medium transition-colors
+                  {% if request.path == '/create-product/' %}
+                    text-blue-600 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-blue-600 after:rounded
+                  {% else %}
+                    text-slate-600 hover:text-slate-900
+                  {% endif %}
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-md">
+          Create Product
+        </a>
+      </div>
+
+      <!-- Desktop User Section -->
+      <div class="hidden md:flex items-center gap-6">
+        {% if user.is_authenticated %}
+          <div class="text-right leading-tight">
+            <div class="text-sm font-semibold text-slate-900">{{ name|default:user.username }}</div>
+            <div class="text-xs text-slate-500">{{ npm|default:"Student" }} — {{ class|default:"Class" }}</div>
+          </div>
+          <a href="{% url 'main:logout' %}"
+             class="font-medium text-rose-600 hover:text-rose-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-md">
+            Logout
+          </a>
+        {% else %}
+          <a href="{% url 'main:login' %}"
+             class="text-slate-600 hover:text-slate-900 font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-md">
+            Login
+          </a>
+          <a href="{% url 'main:register' %}"
+             class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white">
+            Register
+          </a>
+        {% endif %}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button
+          class="mobile-menu-button p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Toggle menu</span>
+          <div class="w-6 h-6 flex flex-col justify-center">
+            <span class="block h-0.5 w-6 bg-current rounded transition-all"></span>
+            <span class="block h-0.5 w-6 bg-current rounded my-1 transition-all"></span>
+            <span class="block h-0.5 w-6 bg-current rounded transition-all"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="primary-navigation" class="mobile-menu hidden md:hidden bg-white/90 backdrop-blur border-t border-slate-200">
+    <div class="px-5 py-4 space-y-4">
+      <!-- Mobile Navigation Links -->
+      <div class="space-y-1">
+        <a href="/"
+          class="block relative font-medium py-3 rounded-md transition-colors text-center
+                  {% if request.path == '/' %}
+                    text-blue-600 after:content-[''] after:absolute after:bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-0.5 after:bg-blue-600 after:rounded
+                  {% else %}
+                    text-slate-700 hover:text-slate-900
+                  {% endif %}
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white">
+          Home
+        </a>
+        <a href="{% url 'main:create_product' %}"
+          class="block relative font-medium py-3 rounded-md transition-colors text-center
+                  {% if request.path == '/create-product/' %}
+                    text-blue-600 after:content-[''] after:absolute after:bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-0.5 after:bg-blue-600 after:rounded
+                  {% else %}
+                    text-slate-700 hover:text-slate-900
+                  {% endif %}
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white">
+          Create Product
+        </a>
+      </div>
+
+      <!-- Mobile User Section -->
+      <div class="border-t border-slate-200 pt-4">
+        {% if user.is_authenticated %}
+          <div class="mb-4">
+            <div class="font-semibold text-slate-900">{{ name|default:user.username }}</div>
+            <div class="text-sm text-slate-500">{{ npm|default:"Student" }} — {{ class|default:"Class" }}</div>
+          </div>
+          <a href="{% url 'main:logout' %}"
+             class="block font-medium text-rose-600 hover:text-rose-700 py-3 rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white">
+            Logout
+          </a>
+        {% else %}
+          <div class="space-y-3">
+            <a href="{% url 'main:login' %}"
+               class="block font-medium text-slate-700 hover:text-slate-900 py-3 rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white text-center">
+              Login
+            </a>
+            <a href="{% url 'main:register' %}"
+               class="block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg text-center transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white">
+              Register
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    function toggleMenu() {
+      const isHidden = menu.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", String(!isHidden));
+    }
+
+    btn.addEventListener("click", toggleMenu);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !menu.classList.contains("hidden")) toggleMenu();
+    });
+  </script>
+</nav>

@@ -1,59 +1,73 @@
- {% extends 'base.html' %}
- {% block content %}
-<h1>CHUKGOODS</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-<h5>NPM: </h5>
-<p>{{ npm }}</p>
+{% block meta %}
+<title>CHUKGOODS</title>
+{% endblock meta %}
 
-<h5>Name:</h5>
-<p>{{ name }}</p>
+{% block content %}
+{% include 'navbar.html' %}
 
-<h5>Class:</h5>
-<p>{{ class }}</p>
+<div class="w-full pt-20 min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-<a href="{% url 'main:create_product' %}">
-  <button>+ Add Product</button>
-</a>
+    <!-- Header Section -->
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-slate-900 mb-2 tracking-tight">Browse Products</h1>
+      <p class="text-slate-600">Find the latest items curated for football enthusiasts</p>
+    </header>
 
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
+    <!-- Filter Section -->
+    <section class="mb-8 bg-white/80 backdrop-blur rounded-xl border border-slate-200 p-4 sm:p-5">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="?"
+             class="px-4 py-2 rounded-lg font-medium transition-colors
+                    {% if request.GET.filter == 'all' or not request.GET.filter %}
+                      bg-blue-600 text-white
+                    {% else %}
+                      bg-white text-slate-700 border border-slate-300 hover:bg-slate-50
+                    {% endif %}">
+            All Products
+          </a>
+          <a href="?filter=my"
+             class="px-4 py-2 rounded-lg font-medium transition-colors
+                    {% if request.GET.filter == 'my' %}
+                      bg-blue-600 text-white
+                    {% else %}
+                      bg-white text-slate-700 border border-slate-300 hover:bg-slate-50
+                    {% endif %}">
+            My Products
+          </a>
+        </div>
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+        {% if user.is_authenticated %}
+          <div class="text-sm text-slate-500">
+            Last login: {{ last_login }}
+          </div>
+        {% endif %}
+      </div>
+    </section>
 
-<hr>
-
-<a href="?filter=all">
-    <button type="button">All Products</button>
-</a>
-<a href="?filter=my">
-    <button type="button">My Products</button>
-</a> 
-
-{% if not product_list %}
-<p>Belum ada data produk pada CHUKGOODS.</p>
-{% else %}
-
-{% for product in product_list %}
-<div>
-  <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
-  <!-- NEEDS TO BE CHECKED START-->
-  <p><b>{{ product.get_category_display }}</b>{% if product.is_featured %} | 
-    <b>Featured</b>{% endif %}</p>
-    <!-- NEEDS TO BE CHECKED END-->
-
-  {% if product.thumbnail %}
-  <img src="{{ product.thumbnail }}" alt="thumbnail" width="150" height="100">
-  <br />
-  {% endif %}
-
-  <p>{{ product.description|truncatewords:25 }}...</p>
-
-  <p><a href="{% url 'main:show_product' product.id %}"><button>Detail</button></a></p>
+    <!-- Product Grid -->
+    {% if not product_list %}
+      <div class="bg-white/80 backdrop-blur rounded-xl border border-slate-200 p-10 text-center">
+        <div class="mx-auto mb-4 h-20 w-20 rounded-2xl flex items-center justify-center">
+          <img src="{% static 'image/no-product.png' %}" alt="No products available" class="w-full h-full object-contain">
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 mb-2">No products found</h3>
+        <p class="text-slate-600 mb-6">Be the first to add a product to the catalog.</p>
+        <a href="{% url 'main:create_product' %}" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
+          Add Product
+        </a>
+      </div>
+    {% else %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        {% for product in product_list %}
+          {% include 'card_product.html' with product=product %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
 </div>
-
-<hr>
-{% endfor %}
-
-{% endif %}
- {% endblock content %}
+{% endblock content %}
