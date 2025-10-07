@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpResponseForbidden
 from django.core import serializers
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils import timezone
 from main.forms import ProductForm
 from main.models import Product
 
@@ -154,10 +155,12 @@ def login_user(request):
             user = form.get_user()
             login(request, user)
             if request.content_type == 'application/json':
-                return JsonResponse({'success': True, 'message': 'Login successful'})
+                response = JsonResponse({'success': True, 'message': 'Login successful'})
+                response.set_cookie('last_login', str(timezone.now()))
+                return response
             else:
                 response = HttpResponseRedirect(reverse("main:show_main"))
-                response.set_cookie('last_login', str(datetime.datetime.now()))
+                response.set_cookie('last_login', str(timezone.now()))
                 return response
         else:
             if request.content_type == 'application/json':
