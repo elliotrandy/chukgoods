@@ -57,4 +57,12 @@
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Show toast for existing errors
+    if (document.querySelector('.text-red-600')) {
+      showToast('Please correct the errors in the form.', 'error');
+    }
+  });
+</script>
 {% endblock %}

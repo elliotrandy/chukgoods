@@ -38,7 +38,7 @@
             <div class="text-sm font-semibold text-slate-900">{{ name|default:user.username }}</div>
             <div class="text-xs text-slate-500">{{ npm|default:"Student" }} — {{ class|default:"Class" }}</div>
           </div>
-          <a href="{% url 'main:logout' %}"
+          <a href="#" onclick="logoutUser()"
              class="font-medium text-rose-600 hover:text-rose-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-md">
             Logout
           </a>
@@ -106,7 +106,7 @@
             <div class="font-semibold text-slate-900">{{ name|default:user.username }}</div>
             <div class="text-sm text-slate-500">{{ npm|default:"Student" }} — {{ class|default:"Class" }}</div>
           </div>
-          <a href="{% url 'main:logout' %}"
+          <a href="#" onclick="logoutUser()"
              class="block font-medium text-rose-600 hover:text-rose-700 py-3 rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white">
             Logout
           </a>
